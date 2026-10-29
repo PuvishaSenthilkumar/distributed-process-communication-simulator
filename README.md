@@ -1,6 +1,6 @@
 # Distributed Process Communication Simulator
 
-A local-first Streamlit application that simulates asynchronous unicast messaging between three or four independent logical processes. It demonstrates Lamport logical clocks, randomized network delay, message reordering, event-log analysis, and report downloads.
+A local-first Streamlit application that simulates asynchronous unicast messaging between 3 and 100 independent logical processes. It demonstrates Lamport logical clocks, randomized network delay, message reordering, event-log analysis, and report downloads.
 
 ## Run from GitHub
 
@@ -60,7 +60,7 @@ streamlit run app.py --server.address 0.0.0.0
 
 ## How to use
 
-Use the sidebar to select three or four processes, outgoing message count per process, delay range, random seed, and timeout. Select **Start Simulation**. The dashboard produces a fresh simulation run and displays:
+Use the sidebar to select 3–100 processes, outgoing message count per process, delay range, random seed, and timeout. Select **Start Simulation**. The dashboard produces a fresh simulation run and displays:
 
 - Send, delivery, and receive counts, observed delay summaries, process statistics, and final Lamport clocks.
 - A searchable event table.

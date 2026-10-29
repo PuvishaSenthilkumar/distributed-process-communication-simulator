@@ -441,7 +441,9 @@ st.markdown(
 
 with st.sidebar:
     st.header("Simulation configuration")
-    process_count = st.selectbox("Number of processes", [3, 4], index=0)
+    process_count = st.number_input(
+        "Number of processes", min_value=3, max_value=100, value=3, step=1
+    )
     messages_per_process = st.number_input(
         "Messages per process", min_value=0, max_value=500, value=5, step=1
     )
@@ -502,4 +504,3 @@ else:
         "Start a simulation to populate the event log, traffic matrix, delay analysis, "
         "process-load comparison, Lamport timeline, and downloadable reports."
     )
-

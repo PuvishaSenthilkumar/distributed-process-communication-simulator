@@ -9,7 +9,9 @@ from models import SimulationConfig
     "config",
     [
         SimulationConfig(process_count=2),
-        SimulationConfig(process_count=5),
+        SimulationConfig(process_count=101),
+        SimulationConfig(process_count=3.5),
+        SimulationConfig(process_count=True),
         SimulationConfig(messages_per_process=-1),
         SimulationConfig(messages_per_process=1.5),
         SimulationConfig(min_delay=-0.1),
@@ -23,4 +25,3 @@ from models import SimulationConfig
 def test_invalid_configurations_are_rejected(config: SimulationConfig) -> None:
     with pytest.raises(ValueError):
         config.validate()
-

@@ -29,6 +29,23 @@ def test_expected_messages_are_sent_delivered_and_received(
     assert len(result.messages) == total
 
 
+@pytest.mark.parametrize("process_count", [5, 100])
+def test_process_counts_above_four_are_supported(process_count: int) -> None:
+    result = run_simulation(
+        SimulationConfig(
+            process_count=process_count,
+            messages_per_process=1,
+            min_delay=0,
+            max_delay=0,
+        )
+    )
+    assert len(result.process_ids) == process_count
+    assert result.summary["total_messages_sent"] == process_count
+    assert result.summary["total_messages_received"] == process_count
+    assert len(result.traffic_matrix) == process_count
+    assert all(check.passed for check in result.validations)
+
+
 def test_zero_messages_terminates_with_empty_event_log() -> None:
     result = run_simulation(
         SimulationConfig(
@@ -97,4 +114,3 @@ def test_simulation_timeout_cancels_pending_tasks() -> None:
                 timeout=0.01,
             )
         )
-

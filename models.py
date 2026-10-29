@@ -18,8 +18,12 @@ class SimulationConfig:
     timeout: float = 30.0
 
     def validate(self) -> None:
-        if self.process_count not in (3, 4):
-            raise ValueError("process_count must be 3 or 4")
+        if (
+            isinstance(self.process_count, bool)
+            or not isinstance(self.process_count, int)
+            or not 3 <= self.process_count <= 100
+        ):
+            raise ValueError("process_count must be an integer between 3 and 100")
         if (
             isinstance(self.messages_per_process, bool)
             or not isinstance(self.messages_per_process, int)
